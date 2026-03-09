@@ -157,7 +157,7 @@ export default function EventContent({
       return
     }
 
-    const appliedKey = `${event.id}:${paramsKey}`
+    const appliedKey = `${event.id}:${marketSlug ?? ''}:${paramsKey}`
     if (appliedOrderParamsRef.current === appliedKey) {
       return
     }
@@ -165,7 +165,9 @@ export default function EventContent({
 
     const market = conditionIdParam
       ? event.markets.find(item => item.condition_id === conditionIdParam)
-      : event.markets[0]
+      : marketSlug
+        ? event.markets.find(item => item.slug === marketSlug)
+        : event.markets[0]
     if (!market) {
       return
     }
@@ -217,6 +219,7 @@ export default function EventContent({
   }, [
     event,
     isMobile,
+    marketSlug,
     searchParams,
     setAmount,
     setIsMobileOrderPanelOpen,
