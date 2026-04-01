@@ -56,7 +56,7 @@ import {
   resolveSportsGamesCardVisibleMarketTypes,
   resolveSportsGamesHeaderMarketTypes,
 } from '@/app/[locale]/(platform)/sports/_utils/sports-games-data'
-import IntentPrefetchLink from '@/components/IntentPrefetchLink'
+import AppLink from '@/components/AppLink'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -4541,7 +4541,8 @@ export default function SportsGamesCenter({
                 </Tooltip>
               )}
 
-              <IntentPrefetchLink
+              <AppLink
+                intentPrefetch
                 href={card.eventHref}
                 data-sports-card-control="true"
                 onClick={event => event.stopPropagation()}
@@ -4566,7 +4567,7 @@ export default function SportsGamesCenter({
                 )}
                 <span>Game View</span>
                 <ChevronRightIcon className="size-3.5" />
-              </IntentPrefetchLink>
+              </AppLink>
             </div>
           </div>
 

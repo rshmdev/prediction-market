@@ -25,7 +25,7 @@ import { flushSync } from 'react-dom'
 import { toast } from 'sonner'
 import SearchDiscoveryContent from '@/app/[locale]/(platform)/_components/SearchDiscoveryContent'
 import { MOBILE_BOTTOM_NAV_OFFSET } from '@/app/[locale]/(platform)/_lib/mobile-bottom-nav'
-import IntentPrefetchLink from '@/components/IntentPrefetchLink'
+import AppLink from '@/components/AppLink'
 import PwaInstallIosInstructions from '@/components/PwaInstallIosInstructions'
 import ThemeSelector from '@/components/ThemeSelector'
 import { Button } from '@/components/ui/button'
@@ -241,19 +241,21 @@ export default function MobileBottomNav() {
                 )}
 
                 <DrawerClose asChild>
-                  <IntentPrefetchLink
+                  <AppLink
+                    intentPrefetch
                     href="/leaderboard"
                     className="flex items-center gap-3 px-4 py-3 text-sm font-semibold"
                   >
                     <TrophyIcon className="size-4 text-amber-500" />
                     {t('Leaderboard')}
-                  </IntentPrefetchLink>
+                  </AppLink>
                 </DrawerClose>
 
                 <div className="mx-4 h-px bg-border/70" />
 
                 <DrawerClose asChild>
-                  <IntentPrefetchLink
+                  <AppLink
+                    intentPrefetch
                     href="/docs/api-reference"
                     target="_blank"
                     rel="noreferrer"
@@ -261,7 +263,7 @@ export default function MobileBottomNav() {
                   >
                     <UnplugIcon className="size-4 text-pink-500" />
                     {t('APIs')}
-                  </IntentPrefetchLink>
+                  </AppLink>
                 </DrawerClose>
               </div>
 
@@ -289,25 +291,27 @@ export default function MobileBottomNav() {
                 <div className="mx-4 h-px bg-border/70" />
 
                 <DrawerClose asChild>
-                  <IntentPrefetchLink
+                  <AppLink
+                    intentPrefetch
                     href="/docs/users"
                     className="flex items-center gap-3 px-4 py-3 text-sm font-semibold"
                   >
                     <BookOpenIcon className="size-4 text-muted-foreground" />
                     {t('Documentation')}
-                  </IntentPrefetchLink>
+                  </AppLink>
                 </DrawerClose>
 
                 <div className="mx-4 h-px bg-border/70" />
 
                 <DrawerClose asChild>
-                  <IntentPrefetchLink
+                  <AppLink
+                    intentPrefetch
                     href="/terms-of-use"
                     className="flex items-center gap-3 px-4 py-3 text-sm font-semibold"
                   >
                     <FileTextIcon className="size-4 text-muted-foreground" />
                     {t('Terms of Use')}
-                  </IntentPrefetchLink>
+                  </AppLink>
                 </DrawerClose>
               </div>
 
@@ -361,14 +365,15 @@ export default function MobileBottomNav() {
 
 interface MobileNavLinkProps {
   active: boolean
-  href: ComponentProps<typeof IntentPrefetchLink>['href']
+  href: ComponentProps<typeof AppLink>['href']
   icon: typeof HouseIcon
   label: ReactNode
 }
 
 function MobileNavLink({ active, href, icon: Icon, label }: MobileNavLinkProps) {
   return (
-    <IntentPrefetchLink
+    <AppLink
+      intentPrefetch
       href={href}
       aria-current={active ? 'page' : undefined}
       className={cn(
@@ -381,7 +386,7 @@ function MobileNavLink({ active, href, icon: Icon, label }: MobileNavLinkProps) 
     >
       <Icon className="size-[17px]" />
       <span className="max-w-full truncate">{label}</span>
-    </IntentPrefetchLink>
+    </AppLink>
   )
 }
 
@@ -397,7 +402,8 @@ function MobilePortfolioNavLink({ active }: { active: boolean }) {
     : '$0.00'
 
   return (
-    <IntentPrefetchLink
+    <AppLink
+      intentPrefetch
       href="/portfolio"
       aria-current={active ? 'page' : undefined}
       aria-label={t('Portfolio')}
@@ -417,7 +423,7 @@ function MobilePortfolioNavLink({ active }: { active: boolean }) {
               {areValuesHidden ? '****' : portfolioValueLabel}
             </span>
           )}
-    </IntentPrefetchLink>
+    </AppLink>
   )
 }
 

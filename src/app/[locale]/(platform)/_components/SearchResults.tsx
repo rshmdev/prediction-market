@@ -3,8 +3,8 @@ import type { Event, PublicProfile, SearchLoadingStates, SearchResultItems } fro
 import { ArrowRightIcon, LoaderIcon } from 'lucide-react'
 import { useExtracted } from 'next-intl'
 import { usePlatformNavigationData } from '@/app/[locale]/(platform)/_providers/PlatformNavigationProvider'
+import AppLink from '@/components/AppLink'
 import EventIconImage from '@/components/EventIconImage'
-import IntentPrefetchLink from '@/components/IntentPrefetchLink'
 import ProfileLink from '@/components/ProfileLink'
 import { buttonVariants } from '@/components/ui/button'
 import { saveRecentSearchEvent } from '@/hooks/useRecentSearchEvents'
@@ -174,14 +174,15 @@ function EventResults({
                   </button>
                 )
               : (
-                  <IntentPrefetchLink
+                  <AppLink
+                    intentPrefetch
                     key={category.href}
                     href={category.href}
                     onClick={onResultClick}
-                    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'rounded-lg')}
+                    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), `rounded-lg`)}
                   >
                     <span className="truncate">{category.label}</span>
-                  </IntentPrefetchLink>
+                  </AppLink>
                 )
           ))}
         </div>
@@ -256,7 +257,8 @@ function EventResults({
               </button>
             )
           : (
-              <IntentPrefetchLink
+              <AppLink
+                intentPrefetch
                 key={`${result.id}-${result.slug}`}
                 href={eventHref}
                 onClick={() => {
@@ -270,7 +272,7 @@ function EventResults({
                 )}
               >
                 {resultContent}
-              </IntentPrefetchLink>
+              </AppLink>
             )
       })}
 
@@ -291,7 +293,8 @@ function EventResults({
               </button>
             )
           : (
-              <IntentPrefetchLink
+              <AppLink
+                intentPrefetch
                 href={allResultsHref}
                 onClick={onResultClick}
                 className={`
@@ -302,7 +305,7 @@ function EventResults({
               >
                 <span>{t('See all results')}</span>
                 <ArrowRightIcon className="size-4" />
-              </IntentPrefetchLink>
+              </AppLink>
             )
       )}
     </div>

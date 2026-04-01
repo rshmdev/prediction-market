@@ -1,6 +1,6 @@
 import type { ProfileLinkStats } from '@/lib/data-api/profile-link-stats'
 import Image from 'next/image'
-import IntentPrefetchLink from '@/components/IntentPrefetchLink'
+import AppLink from '@/components/AppLink'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getAvatarPlaceholderStyle, shouldUseAvatarPlaceholder } from '@/lib/avatar'
 import { cn } from '@/lib/utils'
@@ -133,13 +133,14 @@ export default function ProfileActivityTooltipCard({
               )}
         </div>
         <div className="min-w-0">
-          <IntentPrefetchLink
+          <AppLink
+            intentPrefetch
             href={profileHref}
             className="block truncate text-sm font-semibold text-foreground transition-colors hover:text-foreground"
             title={profile.username}
           >
             {profile.username}
-          </IntentPrefetchLink>
+          </AppLink>
           {joinedLabel && (
             <div className="text-xs text-muted-foreground">
               {joinedLabel}
