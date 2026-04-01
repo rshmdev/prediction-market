@@ -318,10 +318,18 @@ export function PredictionChart({
   const hasExplicitYTicks = Array.isArray(yAxis?.ticks) && yAxis.ticks.length > 0
   const shouldUseNiceYScale = autoscale && !(hasExplicitYMin || hasExplicitYMax || hasExplicitYTicks)
   const resolvedYAxisTicks = useMemo(() => {
-    if (Array.isArray(yAxis?.ticks)) {
-      return yAxis.ticks
-    }
-    return defaultYAxisTicks
+    const sourceTicks = Array.isArray(yAxis?.ticks) ? yAxis.ticks : defaultYAxisTicks
+    const seen = new Set<number>()
+    const normalizedTicks = sourceTicks.filter((value) => {
+      if (!Number.isFinite(value) || seen.has(value)) {
+        return false
+      }
+
+      seen.add(value)
+      return true
+    })
+
+    return normalizedTicks.length > 0 ? normalizedTicks : defaultYAxisTicks
   }, [defaultYAxisTicks, yAxis?.ticks])
   const domainBounds = useMemo(() => {
     const explicitStart = toDomainTimestamp(xDomain?.start)
