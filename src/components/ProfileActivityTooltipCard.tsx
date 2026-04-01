@@ -132,16 +132,19 @@ export default function ProfileActivityTooltipCard({
                 />
               )}
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1 text-left">
           <AppLink
             href={profileHref}
-            className="block truncate text-sm font-semibold text-foreground transition-colors hover:text-foreground"
+            className="
+              block truncate text-left text-sm font-semibold text-foreground transition-colors
+              hover:text-foreground
+            "
             title={profile.username}
           >
             {profile.username}
           </AppLink>
           {joinedLabel && (
-            <div className="text-xs text-muted-foreground">
+            <div className="text-left text-xs text-muted-foreground">
               {joinedLabel}
             </div>
           )}
