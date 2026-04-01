@@ -134,7 +134,6 @@ export default function ProfileActivityTooltipCard({
         </div>
         <div className="min-w-0">
           <AppLink
-            intentPrefetch
             href={profileHref}
             className="block truncate text-sm font-semibold text-foreground transition-colors hover:text-foreground"
             title={profile.username}

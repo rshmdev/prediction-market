@@ -86,7 +86,6 @@ export default async function AdminAffiliateOverview({ rows }: AdminAffiliateOve
                           )}
                       <div className="space-y-0.5">
                         <AppLink
-                          intentPrefetch
                           href={profileHref}
                           className="text-sm font-medium hover:text-primary"
                         >
@@ -149,7 +148,6 @@ export default async function AdminAffiliateOverview({ rows }: AdminAffiliateOve
                     )}
                 <div className="flex-1 space-y-0.5">
                   <AppLink
-                    intentPrefetch
                     href={profileHref}
                     className="block text-sm font-medium hover:text-primary"
                   >

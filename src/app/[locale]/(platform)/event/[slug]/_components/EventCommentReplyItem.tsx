@@ -114,7 +114,6 @@ export default function EventCommentReplyItem({
         <div className="flex w-full flex-1 gap-3">
           <div className="flex-1">
             <AppLink
-              intentPrefetch
               href={parentHref}
               className={`
                 text-sm font-semibold text-primary underline-offset-2 transition-colors

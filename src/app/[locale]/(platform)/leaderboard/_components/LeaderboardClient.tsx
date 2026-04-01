@@ -935,7 +935,6 @@ export default function LeaderboardClient({ initialFilters }: { initialFilters: 
                                 {eventHref
                                   ? (
                                       <AppLink
-                                        intentPrefetch
                                         href={eventHref as Route}
                                         className={`
                                           block max-w-[20ch] truncate text-muted-foreground transition-colors

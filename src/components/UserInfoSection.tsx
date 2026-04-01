@@ -64,7 +64,6 @@ export default function UserInfoSection() {
         {profileHref
           ? (
               <AppLink
-                intentPrefetch
                 href={profileHref as any}
                 className={`
                   truncate text-base/tight font-semibold text-foreground underline-offset-2 transition-colors

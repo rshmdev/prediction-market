@@ -163,7 +163,7 @@ export default function ProfileLink({
     : null
 
   const avatarNode = (
-    <AppLink intentPrefetch href={profileHref} data-avatar-wrapper="true" className="relative isolate shrink-0">
+    <AppLink href={profileHref} data-avatar-wrapper="true" className="relative isolate shrink-0">
       {!showPlaceholder && hasCustomAvatar
         ? (
             <Image
@@ -199,7 +199,6 @@ export default function ProfileLink({
   const usernameNode = (
     <div className={usernameWrapperClassName}>
       <AppLink
-        intentPrefetch
         href={profileHref}
         title={titleValue}
         className={usernameLinkClassName}
