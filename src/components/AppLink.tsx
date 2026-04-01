@@ -1,6 +1,6 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, ComponentRef } from 'react'
+import type { ComponentPropsWithoutRef, ComponentRef, Ref } from 'react'
 import { useState } from 'react'
 import { Link } from '@/i18n/navigation'
 
@@ -8,10 +8,11 @@ type NextLinkPrefetch = ComponentPropsWithoutRef<typeof Link>['prefetch']
 type AppLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, 'prefetch'> & {
   intentPrefetch?: boolean
   prefetch?: NextLinkPrefetch
+  ref?: Ref<AppLinkRef>
 }
 type AppLinkRef = ComponentRef<typeof Link>
 
-function AppLink({ ref, intentPrefetch = false, onFocus, onMouseEnter, onTouchStart, prefetch = false, ...props }: AppLinkProps & { ref?: React.RefObject<AppLinkRef | null> }) {
+function AppLink({ ref, intentPrefetch = false, onFocus, onMouseEnter, onTouchStart, prefetch = false, ...props }: AppLinkProps) {
   const [shouldPrefetch, setShouldPrefetch] = useState(false)
   const nextPrefetch = prefetch === false ? null : prefetch
   const resolvedPrefetch = intentPrefetch
