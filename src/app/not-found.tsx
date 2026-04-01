@@ -1,5 +1,5 @@
 import type { Route } from 'next'
-import AppLink from '@/components/AppLink'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { loadRuntimeThemeState } from '@/lib/theme-settings'
 
@@ -96,9 +96,9 @@ export default async function NotFound() {
         </p>
       )}
       <Button asChild className="mt-5">
-        <AppLink href={'/' as Route}>
+        <Link href={'/' as Route}>
           Go to home
-        </AppLink>
+        </Link>
       </Button>
     </div>
   )
